@@ -10,7 +10,8 @@ const songSchema = new mongoose.Schema({
   url: {
     type: String,
     required: true
-  }
+  },
+  imageUrl: String // New field for image URL
 });
 
 const Song = mongoose.model('Song', songSchema);

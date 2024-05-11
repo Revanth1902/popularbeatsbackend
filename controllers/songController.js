@@ -23,21 +23,19 @@ exports.getSongById = async (req, res) => {
 };
 
 exports.createSong = async (req, res) => {
+  const { name, description, url, imageUrl } = req.body;
+
   const song = new Song({
-    name: req.body.name,
-    description: req.body.description,
-    url: req.body.url
+    name,
+    description,
+    url,
+    imageUrl // Adding imageUrl field
   });
 
   try {
     const newSong = await song.save();
     res.status(201).json(newSong);
-    console.log(req.body);
-
   } catch (err) {
     res.status(400).json({ message: err.message });
-    console.log(req.body);
-
   }
-  
 };
